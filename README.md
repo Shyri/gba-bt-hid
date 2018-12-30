@@ -1,4 +1,4 @@
-### GBA Bluetooth HID ###
+## GBA Bluetooth HID ##
 This project purpose is to convert a Game Boy Advance into a Bluetooth HID device.
 Three steps are needed to achieve this:
 
