@@ -1,0 +1,5 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DGBAFIX_EXE=/opt/devkitpro/tools/bin/gbafix -G "CodeBlocks - Unix Makefiles" /Users/shyri/Documents/personal/gba-bt-hid
+-- /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/gba_bt_hid.gba
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug

@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+a6864ed87445e17469b10849bd150e6a CMakeFiles/TargetObjCopy_gba_bt_hid
+50303b07686d1700b1bb23d0547e7c0e CMakeFiles/Target_GBAgba_bt_hid
+8f19d7dac9dae9b7833b20b0d23a9768 gba_bt_hid.gba

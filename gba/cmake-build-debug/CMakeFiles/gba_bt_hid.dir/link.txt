@@ -1,0 +1,1 @@
+/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -specs=gba.specs CMakeFiles/gba_bt_hid.dir/source/main.cpp.o  -o gba_bt_hid  -L/opt/devkitpro/libgba/lib -Wl,-rpath,/opt/devkitpro/libgba/lib -lGBA 

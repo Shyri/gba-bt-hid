@@ -18,15 +18,27 @@ int main(void) {
     // is required
     irqInit();
     irqEnable(IRQ_VBLANK);
+    REG_IME = 1;
 
     consoleDemoInit();
 
     // ansi escape sequence to set print co-ordinates
     // /x1b[line;columnH
     printf("\x1b[10;10HHello World!\n");
-
+    printf("\x1b[10;10HBullshit!\n");
     while (1) {
+        int keys_pressed, keys_released;
+
         VBlankIntrWait();
+
+        scanKeys();
+
+        keys_pressed = keysDown();
+        keys_released = keysUp();
+
+        if (keys_released & KEY_UP) {
+            printf("\x1b[10;10HA\n");
+        }
     }
 }
 
