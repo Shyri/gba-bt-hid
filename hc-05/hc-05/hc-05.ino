@@ -7,8 +7,11 @@ void setup() {
 
 void loop() {
    // read from port 0, send to port 1:
+  ///sendButton();
+  //Serial.write((uint8_t) 0xFD);
+  //Serial.write((uint8_t) 0x06);
   int ch = 0;
-  if (Serial.available()) {
+  if (Serial. available()) {
     ch = Serial.read();
     if (ch == 'g') {       
       Serial.write("Sending...\n");
@@ -40,8 +43,29 @@ void sendButton() {
   Serial1.write((uint8_t)0x00); // axis_z
   Serial1.write((uint8_t)0x00); // axis_?
   Serial1.write((uint8_t)0x00); // buttons
-  Serial1.write((uint8_t)0x20); // buttons
+  Serial1.write((uint8_t)0x01); // buttons
+
+  Serial.write((uint8_t)0x00); // axis_x
+  Serial.write((uint8_t)0x00); // axis_y
+  Serial.write((uint8_t)0x00); // axis_z
+  Serial.write((uint8_t)0x00); // axis_?
+  Serial.write((uint8_t)0x00); // buttons
+  Serial.write((uint8_t)0x01); // buttons
   //Serial1.write((uint8_t)0x00);
+  // 0x0001 -> A
+  // 0x0002 -> B
+  // 0x0008 -> X
+  
+  // 0x0010 -> Y
+  // 0x0040 -> L
+  // 0x0080 -> R
+  
+  // 0x2000 -> SELECT
+  // 0x4000 -> START
+
+  // Axises X,Y:
+  // 0x7f -> RIGHT
+  // 0x80 -> LEFT
 }
 
 void disconnect() {
