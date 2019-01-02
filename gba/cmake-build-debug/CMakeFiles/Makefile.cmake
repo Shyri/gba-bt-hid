@@ -51,7 +51,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/TargetObjCopy_gba_bt_hid.dir/DependInfo.cmake"
-  "CMakeFiles/Target_GBAgba_bt_hid.dir/DependInfo.cmake"
-  "CMakeFiles/gba_bt_hid.dir/DependInfo.cmake"
+  "CMakeFiles/Target_GBAgba_bt_hid_mb.dir/DependInfo.cmake"
+  "CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/DependInfo.cmake"
+  "CMakeFiles/gba_bt_hid_mb.dir/DependInfo.cmake"
   )

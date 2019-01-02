@@ -59,119 +59,119 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/shyri/Documents/personal/gba-bt-hid
+CMAKE_SOURCE_DIR = /Users/shyri/Documents/personal/gba-bt-hid/gba
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/TargetObjCopy_gba_bt_hid.dir
+# Target rules for target CMakeFiles/Target_GBAgba_bt_hid_mb.dir
 
 # All Build rule for target.
-CMakeFiles/TargetObjCopy_gba_bt_hid.dir/all: CMakeFiles/gba_bt_hid.dir/all
-	$(MAKE) -f CMakeFiles/TargetObjCopy_gba_bt_hid.dir/build.make CMakeFiles/TargetObjCopy_gba_bt_hid.dir/depend
-	$(MAKE) -f CMakeFiles/TargetObjCopy_gba_bt_hid.dir/build.make CMakeFiles/TargetObjCopy_gba_bt_hid.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles --progress-num=1 "Built target TargetObjCopy_gba_bt_hid"
-.PHONY : CMakeFiles/TargetObjCopy_gba_bt_hid.dir/all
+CMakeFiles/Target_GBAgba_bt_hid_mb.dir/all: CMakeFiles/gba_bt_hid_mb.dir/all
+	$(MAKE) -f CMakeFiles/Target_GBAgba_bt_hid_mb.dir/build.make CMakeFiles/Target_GBAgba_bt_hid_mb.dir/depend
+	$(MAKE) -f CMakeFiles/Target_GBAgba_bt_hid_mb.dir/build.make CMakeFiles/Target_GBAgba_bt_hid_mb.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles --progress-num=2 "Built target Target_GBAgba_bt_hid_mb"
+.PHONY : CMakeFiles/Target_GBAgba_bt_hid_mb.dir/all
 
 # Include target in all.
-all: CMakeFiles/TargetObjCopy_gba_bt_hid.dir/all
+all: CMakeFiles/Target_GBAgba_bt_hid_mb.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/TargetObjCopy_gba_bt_hid.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TargetObjCopy_gba_bt_hid.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/TargetObjCopy_gba_bt_hid.dir/rule
+CMakeFiles/Target_GBAgba_bt_hid_mb.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Target_GBAgba_bt_hid_mb.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/Target_GBAgba_bt_hid_mb.dir/rule
 
 # Convenience name for target.
-TargetObjCopy_gba_bt_hid: CMakeFiles/TargetObjCopy_gba_bt_hid.dir/rule
+Target_GBAgba_bt_hid_mb: CMakeFiles/Target_GBAgba_bt_hid_mb.dir/rule
 
-.PHONY : TargetObjCopy_gba_bt_hid
-
-# clean rule for target.
-CMakeFiles/TargetObjCopy_gba_bt_hid.dir/clean:
-	$(MAKE) -f CMakeFiles/TargetObjCopy_gba_bt_hid.dir/build.make CMakeFiles/TargetObjCopy_gba_bt_hid.dir/clean
-.PHONY : CMakeFiles/TargetObjCopy_gba_bt_hid.dir/clean
+.PHONY : Target_GBAgba_bt_hid_mb
 
 # clean rule for target.
-clean: CMakeFiles/TargetObjCopy_gba_bt_hid.dir/clean
+CMakeFiles/Target_GBAgba_bt_hid_mb.dir/clean:
+	$(MAKE) -f CMakeFiles/Target_GBAgba_bt_hid_mb.dir/build.make CMakeFiles/Target_GBAgba_bt_hid_mb.dir/clean
+.PHONY : CMakeFiles/Target_GBAgba_bt_hid_mb.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Target_GBAgba_bt_hid_mb.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Target_GBAgba_bt_hid.dir
+# Target rules for target CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir
 
 # All Build rule for target.
-CMakeFiles/Target_GBAgba_bt_hid.dir/all: CMakeFiles/gba_bt_hid.dir/all
-	$(MAKE) -f CMakeFiles/Target_GBAgba_bt_hid.dir/build.make CMakeFiles/Target_GBAgba_bt_hid.dir/depend
-	$(MAKE) -f CMakeFiles/Target_GBAgba_bt_hid.dir/build.make CMakeFiles/Target_GBAgba_bt_hid.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles --progress-num=2 "Built target Target_GBAgba_bt_hid"
-.PHONY : CMakeFiles/Target_GBAgba_bt_hid.dir/all
+CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/all: CMakeFiles/gba_bt_hid_mb.dir/all
+	$(MAKE) -f CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/build.make CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/depend
+	$(MAKE) -f CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/build.make CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles --progress-num=1 "Built target TargetObjCopy_gba_bt_hid_mb"
+.PHONY : CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/all
 
 # Include target in all.
-all: CMakeFiles/Target_GBAgba_bt_hid.dir/all
+all: CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Target_GBAgba_bt_hid.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Target_GBAgba_bt_hid.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/Target_GBAgba_bt_hid.dir/rule
+CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/rule
 
 # Convenience name for target.
-Target_GBAgba_bt_hid: CMakeFiles/Target_GBAgba_bt_hid.dir/rule
+TargetObjCopy_gba_bt_hid_mb: CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/rule
 
-.PHONY : Target_GBAgba_bt_hid
-
-# clean rule for target.
-CMakeFiles/Target_GBAgba_bt_hid.dir/clean:
-	$(MAKE) -f CMakeFiles/Target_GBAgba_bt_hid.dir/build.make CMakeFiles/Target_GBAgba_bt_hid.dir/clean
-.PHONY : CMakeFiles/Target_GBAgba_bt_hid.dir/clean
+.PHONY : TargetObjCopy_gba_bt_hid_mb
 
 # clean rule for target.
-clean: CMakeFiles/Target_GBAgba_bt_hid.dir/clean
+CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/clean:
+	$(MAKE) -f CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/build.make CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/clean
+.PHONY : CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/gba_bt_hid.dir
+# Target rules for target CMakeFiles/gba_bt_hid_mb.dir
 
 # All Build rule for target.
-CMakeFiles/gba_bt_hid.dir/all:
-	$(MAKE) -f CMakeFiles/gba_bt_hid.dir/build.make CMakeFiles/gba_bt_hid.dir/depend
-	$(MAKE) -f CMakeFiles/gba_bt_hid.dir/build.make CMakeFiles/gba_bt_hid.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target gba_bt_hid"
-.PHONY : CMakeFiles/gba_bt_hid.dir/all
+CMakeFiles/gba_bt_hid_mb.dir/all:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/depend
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles --progress-num=3,4,5 "Built target gba_bt_hid_mb"
+.PHONY : CMakeFiles/gba_bt_hid_mb.dir/all
 
 # Include target in all.
-all: CMakeFiles/gba_bt_hid.dir/all
+all: CMakeFiles/gba_bt_hid_mb.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/gba_bt_hid.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gba_bt_hid.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/gba_bt_hid.dir/rule
+CMakeFiles/gba_bt_hid_mb.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gba_bt_hid_mb.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/gba_bt_hid_mb.dir/rule
 
 # Convenience name for target.
-gba_bt_hid: CMakeFiles/gba_bt_hid.dir/rule
+gba_bt_hid_mb: CMakeFiles/gba_bt_hid_mb.dir/rule
 
-.PHONY : gba_bt_hid
-
-# clean rule for target.
-CMakeFiles/gba_bt_hid.dir/clean:
-	$(MAKE) -f CMakeFiles/gba_bt_hid.dir/build.make CMakeFiles/gba_bt_hid.dir/clean
-.PHONY : CMakeFiles/gba_bt_hid.dir/clean
+.PHONY : gba_bt_hid_mb
 
 # clean rule for target.
-clean: CMakeFiles/gba_bt_hid.dir/clean
+CMakeFiles/gba_bt_hid_mb.dir/clean:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/clean
+.PHONY : CMakeFiles/gba_bt_hid_mb.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/gba_bt_hid_mb.dir/clean
 
 .PHONY : clean
 

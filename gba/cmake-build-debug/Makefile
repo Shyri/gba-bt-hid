@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/shyri/Documents/personal/gba-bt-hid
+CMAKE_SOURCE_DIR = /Users/shyri/Documents/personal/gba-bt-hid/gba
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,70 +111,97 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named TargetObjCopy_gba_bt_hid
+# Target rules for targets named Target_GBAgba_bt_hid_mb
 
 # Build rule for target.
-TargetObjCopy_gba_bt_hid: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TargetObjCopy_gba_bt_hid
-.PHONY : TargetObjCopy_gba_bt_hid
+Target_GBAgba_bt_hid_mb: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Target_GBAgba_bt_hid_mb
+.PHONY : Target_GBAgba_bt_hid_mb
 
 # fast build rule for target.
-TargetObjCopy_gba_bt_hid/fast:
-	$(MAKE) -f CMakeFiles/TargetObjCopy_gba_bt_hid.dir/build.make CMakeFiles/TargetObjCopy_gba_bt_hid.dir/build
-.PHONY : TargetObjCopy_gba_bt_hid/fast
+Target_GBAgba_bt_hid_mb/fast:
+	$(MAKE) -f CMakeFiles/Target_GBAgba_bt_hid_mb.dir/build.make CMakeFiles/Target_GBAgba_bt_hid_mb.dir/build
+.PHONY : Target_GBAgba_bt_hid_mb/fast
 
 #=============================================================================
-# Target rules for targets named Target_GBAgba_bt_hid
+# Target rules for targets named TargetObjCopy_gba_bt_hid_mb
 
 # Build rule for target.
-Target_GBAgba_bt_hid: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Target_GBAgba_bt_hid
-.PHONY : Target_GBAgba_bt_hid
+TargetObjCopy_gba_bt_hid_mb: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 TargetObjCopy_gba_bt_hid_mb
+.PHONY : TargetObjCopy_gba_bt_hid_mb
 
 # fast build rule for target.
-Target_GBAgba_bt_hid/fast:
-	$(MAKE) -f CMakeFiles/Target_GBAgba_bt_hid.dir/build.make CMakeFiles/Target_GBAgba_bt_hid.dir/build
-.PHONY : Target_GBAgba_bt_hid/fast
+TargetObjCopy_gba_bt_hid_mb/fast:
+	$(MAKE) -f CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/build.make CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/build
+.PHONY : TargetObjCopy_gba_bt_hid_mb/fast
 
 #=============================================================================
-# Target rules for targets named gba_bt_hid
+# Target rules for targets named gba_bt_hid_mb
 
 # Build rule for target.
-gba_bt_hid: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gba_bt_hid
-.PHONY : gba_bt_hid
+gba_bt_hid_mb: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gba_bt_hid_mb
+.PHONY : gba_bt_hid_mb
 
 # fast build rule for target.
-gba_bt_hid/fast:
-	$(MAKE) -f CMakeFiles/gba_bt_hid.dir/build.make CMakeFiles/gba_bt_hid.dir/build
-.PHONY : gba_bt_hid/fast
+gba_bt_hid_mb/fast:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/build
+.PHONY : gba_bt_hid_mb/fast
 
-source/main.o: source/main.cpp.o
+source/main.o: source/main.c.o
 
 .PHONY : source/main.o
 
 # target to build an object file
-source/main.cpp.o:
-	$(MAKE) -f CMakeFiles/gba_bt_hid.dir/build.make CMakeFiles/gba_bt_hid.dir/source/main.cpp.o
-.PHONY : source/main.cpp.o
+source/main.c.o:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/source/main.c.o
+.PHONY : source/main.c.o
 
-source/main.i: source/main.cpp.i
+source/main.i: source/main.c.i
 
 .PHONY : source/main.i
 
 # target to preprocess a source file
-source/main.cpp.i:
-	$(MAKE) -f CMakeFiles/gba_bt_hid.dir/build.make CMakeFiles/gba_bt_hid.dir/source/main.cpp.i
-.PHONY : source/main.cpp.i
+source/main.c.i:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/source/main.c.i
+.PHONY : source/main.c.i
 
-source/main.s: source/main.cpp.s
+source/main.s: source/main.c.s
 
 .PHONY : source/main.s
 
 # target to generate assembly for a file
-source/main.cpp.s:
-	$(MAKE) -f CMakeFiles/gba_bt_hid.dir/build.make CMakeFiles/gba_bt_hid.dir/source/main.cpp.s
-.PHONY : source/main.cpp.s
+source/main.c.s:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/source/main.c.s
+.PHONY : source/main.c.s
+
+source/uart.o: source/uart.c.o
+
+.PHONY : source/uart.o
+
+# target to build an object file
+source/uart.c.o:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/source/uart.c.o
+.PHONY : source/uart.c.o
+
+source/uart.i: source/uart.c.i
+
+.PHONY : source/uart.i
+
+# target to preprocess a source file
+source/uart.c.i:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/source/uart.c.i
+.PHONY : source/uart.c.i
+
+source/uart.s: source/uart.c.s
+
+.PHONY : source/uart.s
+
+# target to generate assembly for a file
+source/uart.c.s:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/source/uart.c.s
+.PHONY : source/uart.c.s
 
 # Help Target
 help:
@@ -182,14 +209,17 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... TargetObjCopy_gba_bt_hid"
+	@echo "... Target_GBAgba_bt_hid_mb"
+	@echo "... TargetObjCopy_gba_bt_hid_mb"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Target_GBAgba_bt_hid"
-	@echo "... gba_bt_hid"
+	@echo "... gba_bt_hid_mb"
 	@echo "... source/main.o"
 	@echo "... source/main.i"
 	@echo "... source/main.s"
+	@echo "... source/uart.o"
+	@echo "... source/uart.i"
+	@echo "... source/uart.s"
 .PHONY : help
 
 

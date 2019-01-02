@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/shyri/Documents/personal/gba-bt-hid
+CMAKE_SOURCE_DIR = /Users/shyri/Documents/personal/gba-bt-hid/gba
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug
 
 # Utility rule file for Target_GBAgba_bt_hid.
 
@@ -54,11 +54,11 @@ CMAKE_BINARY_DIR = /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug
 include CMakeFiles/Target_GBAgba_bt_hid.dir/progress.make
 
 CMakeFiles/Target_GBAgba_bt_hid: gba_bt_hid.gba
-	/opt/devkitpro/tools/bin/gbafix /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/gba_bt_hid.gba
+	/opt/devkitpro/tools/bin/gbafix /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/gba_bt_hid.gba
 
 gba_bt_hid.gba: gba_bt_hid
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating gba_bt_hid.gba"
-	/opt/devkitpro/devkitARM/bin/arm-none-eabi-objcopy -O binary /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/gba_bt_hid /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/gba_bt_hid.gba
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating gba_bt_hid.gba"
+	/opt/devkitpro/devkitARM/bin/arm-none-eabi-objcopy -O binary /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/gba_bt_hid /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/gba_bt_hid.gba
 
 Target_GBAgba_bt_hid: CMakeFiles/Target_GBAgba_bt_hid
 Target_GBAgba_bt_hid: gba_bt_hid.gba
@@ -76,6 +76,6 @@ CMakeFiles/Target_GBAgba_bt_hid.dir/clean:
 .PHONY : CMakeFiles/Target_GBAgba_bt_hid.dir/clean
 
 CMakeFiles/Target_GBAgba_bt_hid.dir/depend:
-	cd /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/shyri/Documents/personal/gba-bt-hid /Users/shyri/Documents/personal/gba-bt-hid /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug /Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles/Target_GBAgba_bt_hid.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/shyri/Documents/personal/gba-bt-hid/gba /Users/shyri/Documents/personal/gba-bt-hid/gba /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/Target_GBAgba_bt_hid.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Target_GBAgba_bt_hid.dir/depend
 

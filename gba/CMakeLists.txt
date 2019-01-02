@@ -37,7 +37,7 @@ find_library(GBA gba)
 
 add_definitions(-DARM7)
 
-set(EXE_NAME gba_bt_hid)
+set(EXE_NAME gba_bt_hid_mb)
 file(GLOB_RECURSE SOURCE_FILES
     source/*
 )
@@ -46,7 +46,7 @@ add_executable(${EXE_NAME} ${SOURCE_FILES})
 target_link_libraries(${EXE_NAME} GBA)
 set_target_properties(${EXE_NAME}
         PROPERTIES
-        LINK_FLAGS -specs=gba.specs
+        LINK_FLAGS -specs=gba_mb.specs
         COMPILER_FLAGS "-mthumb -mthumb-interwork")
 
 objcopy_file(${EXE_NAME})

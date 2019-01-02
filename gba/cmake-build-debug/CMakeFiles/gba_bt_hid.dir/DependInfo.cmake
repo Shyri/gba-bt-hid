@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/shyri/Documents/personal/gba-bt-hid/source/main.cpp" "/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/CMakeFiles/gba_bt_hid.dir/source/main.cpp.o"
+  "/Users/shyri/Documents/personal/gba-bt-hid/gba/source/main.cpp" "/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/gba_bt_hid.dir/source/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/shyri/Documents/personal/gba-bt-hid/source/main.cpp
+/Users/shyri/Documents/personal/gba-bt-hid/gba/source/main.cpp
 gba_console.h
 -
 gba_video.h

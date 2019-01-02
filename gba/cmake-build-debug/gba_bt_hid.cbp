@@ -8,58 +8,58 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug"/>
+				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="TargetObjCopy_gba_bt_hid">
-				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug"/>
+			<Target title="Target_GBAgba_bt_hid_mb">
+				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 TargetObjCopy_gba_bt_hid"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 Target_GBAgba_bt_hid_mb"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TargetObjCopy_gba_bt_hid_mb">
+				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 TargetObjCopy_gba_bt_hid_mb"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug"/>
+				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug"/>
+				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="Target_GBAgba_bt_hid">
-				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 Target_GBAgba_bt_hid"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="gba_bt_hid">
-				<Option output="/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/gba_bt_hid" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug"/>
+			<Target title="gba_bt_hid_mb">
+				<Option output="/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/gba_bt_hid_mb" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -73,15 +73,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 gba_bt_hid"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 gba_bt_hid_mb"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="gba_bt_hid/fast">
-				<Option output="/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/gba_bt_hid" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug"/>
+			<Target title="gba_bt_hid_mb/fast">
+				<Option output="/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/gba_bt_hid_mb" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -95,20 +95,26 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 gba_bt_hid/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 gba_bt_hid_mb/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/source/main.cpp">
-			<Option target="gba_bt_hid"/>
+		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/gba/source/main.c">
+			<Option target="gba_bt_hid_mb"/>
 		</Unit>
-		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/CMakeLists.txt">
+		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/gba/source/uart.c">
+			<Option target="gba_bt_hid_mb"/>
+		</Unit>
+		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/gba/source/uart.h">
+			<Option target="gba_bt_hid_mb"/>
+		</Unit>
+		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/gba/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/gba_rules.cmake">
+		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/gba/gba_rules.cmake">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
