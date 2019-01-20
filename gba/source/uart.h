@@ -19,5 +19,6 @@
 void initUART(short baudRate);
 unsigned char uartRead(void);
 void uartWrite(unsigned char data);
-
+void uartReadMessage(unsigned char * message);
+void uartSendMessage(char * message);
 #endif //GBA_BT_HID_UART_H

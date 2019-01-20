@@ -6,7 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <gba.h>
+#include <string.h>
 #include "uart.h"
+#include "hc05.h"
 
 //---------------------------------------------------------------------------------
 // Program entry point
@@ -34,6 +36,15 @@ typedef enum HC05_BUTTONS {
     PAD_LEFT   = 0x80
 } HC05_BUTTONS_BITS;
 
+typedef enum STATUS {
+    DISCOVERING = 0,
+    CONNECTING = 1,
+    CONNECTED = 2,
+    DISCONNECTING = 3,
+} STATES;
+
+int status = DISCOVERING;
+
 uint32_t getCurrentAxises() {
     return rAxis | (zAxis << 8) | (yAxis << 16) | (xAxis << 24);
 }
@@ -42,9 +53,11 @@ uint16_t getCurrentButtons() {
     return buttons2 | (buttons1 << 8);
 }
 
-void sendHeader(void) {
-    uartWrite(0xFD);
-    uartWrite(0x06);
+void clearConsole() {
+    printf("\x1b[8;1H                    \n");
+    printf("\x1b[9;1H                    \n");
+    printf("\x1b[10;10H                  \n");
+    printf("\x1b[11;10H                  \n");
 }
 
 void sendButtons() {
@@ -52,13 +65,7 @@ void sendButtons() {
         return;
     }
 
-    sendHeader();
-    uartWrite(xAxis);
-    uartWrite(yAxis);
-    uartWrite(zAxis);
-    uartWrite(rAxis);
-    uartWrite(buttons1);
-    uartWrite(buttons2);
+    sendGamepad(xAxis, yAxis, zAxis, rAxis, buttons1, buttons2);
 
     lastAxis = getCurrentAxises();
     lastButtons = getCurrentButtons();
@@ -73,10 +80,69 @@ void resetButtons() {
     buttons2 = 0x00;
 }
 
-void connect() {
-    uartWrite('$');
-    uartWrite('$');
-    uartWrite('$');
+void autoConnect() {
+    clearConsole();
+    printf("\x1b[8;10HConnecting...\n");
+
+    if (startCommandMode()) {
+        status = CONNECTING;
+        if (connectLast()) {
+            status = CONNECTED;
+            printf("\x1b[8;10HConnected!\n");
+        } else {
+            printf("\x1b[8;10HConnection Failed!\n");
+            status = DISCOVERING;
+        }
+    } else {
+        status = DISCOVERING;
+        printf("\x1b[8;10HConnection Failed!\n");
+    }
+}
+
+void processButtons(int keys_pressed) {
+    if (keys_pressed & KEY_A) {
+        buttons1 = buttons1 | BUTTON_A;
+    }
+
+    if (keys_pressed & KEY_B) {
+        buttons1 = buttons1 | BUTTON_B;
+    }
+
+    if (keys_pressed & KEY_L) {
+        buttons2 = buttons1 | BUTTON_L;
+    }
+
+    if (keys_pressed & KEY_R) {
+        buttons2 = buttons1 | BUTTON_R;
+    }
+
+
+    if (keys_pressed & KEY_START) {
+        buttons2 = buttons1 | BUTTON_START;
+    }
+
+
+    if (keys_pressed & KEY_SELECT) {
+        buttons2 = buttons1 | BUTTON_SELECT;
+    }
+
+    if (keys_pressed & KEY_UP) {
+        yAxis = PAD_UP;
+    }
+
+    if (keys_pressed & KEY_DOWN) {
+        yAxis = PAD_DOWN;
+    }
+
+    if (keys_pressed & KEY_RIGHT) {
+        xAxis = PAD_RIGHT;
+    }
+
+    if (keys_pressed & KEY_LEFT) {
+        xAxis = PAD_LEFT;
+    }
+
+    sendButtons();
 }
 
 int main(void) {
@@ -90,16 +156,13 @@ int main(void) {
 
     consoleDemoInit();
 
-    // ansi escape sequence to set print co-ordinates
-    // /x1b[line;columnH
-    printf("\x1b[10;10HBullshit!\n");
+    printf("\x1b[8;1HDiscovery Mode Enabled\n");
+    printf("\x1b[10;1HPress A to pair with last device\n");
 
     initUART(SIO_9600);
 
-
-
     while (1) {
-        int keys_pressed, keys_released;
+        int keys_pressed;
 
         VBlankIntrWait();
 
@@ -109,48 +172,17 @@ int main(void) {
 
         keys_pressed = keysDown();
 
-        if (keys_pressed & KEY_A) {
-            buttons1 = buttons1 | BUTTON_A;
+        switch (status) {
+            case DISCOVERING:
+                // TODO Read message to see if paired with device
+                // TODO check A button
+                if (keys_pressed & KEY_A) {
+                    autoConnect();
+                }
+                break;
+            case CONNECTED:
+                processButtons(keys_pressed);
+                break;
         }
-
-        if (keys_pressed & KEY_B) {
-            buttons1 = buttons1 | BUTTON_B;
-        }
-
-        if (keys_pressed & KEY_L) {
-            buttons2 = buttons1 | BUTTON_L;
-        }
-
-        if (keys_pressed & KEY_R) {
-            buttons2 = buttons1 | BUTTON_R;
-        }
-
-
-        if (keys_pressed & KEY_START) {
-            buttons2 = buttons1 | BUTTON_START;
-        }
-
-
-        if (keys_pressed & KEY_SELECT) {
-            buttons2 = buttons1 | BUTTON_SELECT;
-        }
-
-        if (keys_pressed & KEY_UP) {
-            yAxis = PAD_UP;
-        }
-
-        if (keys_pressed & KEY_DOWN) {
-            yAxis = PAD_DOWN;
-        }
-
-        if (keys_pressed & KEY_RIGHT) {
-            xAxis = PAD_RIGHT;
-        }
-
-        if (keys_pressed & KEY_LEFT) {
-            xAxis = PAD_LEFT;
-        }
-
-        sendButtons();
     }
 }

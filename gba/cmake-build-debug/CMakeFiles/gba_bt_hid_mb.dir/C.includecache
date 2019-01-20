@@ -6,22 +6,10 @@
 
 #IncludeRegexTransform: 
 
-/Users/shyri/Documents/personal/gba-bt-hid/gba/source/main.c
-gba_console.h
--
-gba_video.h
--
-gba_interrupt.h
--
-gba_systemcalls.h
--
-gba_input.h
--
-stdio.h
--
-stdlib.h
--
+/Users/shyri/Documents/personal/gba-bt-hid/gba/source/hc05.c
 gba.h
+-
+string.h
 -
 uart.h
 /Users/shyri/Documents/personal/gba-bt-hid/gba/source/uart.h

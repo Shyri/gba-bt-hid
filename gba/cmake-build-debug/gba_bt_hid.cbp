@@ -102,6 +102,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/gba/source/hc05.c">
+			<Option target="gba_bt_hid_mb"/>
+		</Unit>
+		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/gba/source/hc05.h">
+			<Option target="gba_bt_hid_mb"/>
+		</Unit>
 		<Unit filename="/Users/shyri/Documents/personal/gba-bt-hid/gba/source/main.c">
 			<Option target="gba_bt_hid_mb"/>
 		</Unit>

@@ -3,6 +3,7 @@ void setup() {
   // initialize both serial ports:
   Serial.begin(9600);
   Serial1.begin(9600);
+  Serial2.begin(9600);
 }
 
 void loop() {
@@ -30,7 +31,17 @@ void loop() {
   // read from port 1, send to port 0:
   if (Serial1.available()) {
     int inByte = Serial1.read();
+    Serial.println("HC-05"); 
+    Serial.println(inByte); 
+    //Serial.println(" "); 
+  }
+  
+  // read from port 2, send to port 0:
+  if (Serial2.available()) {
+    int inByte = Serial2.read();
+    Serial.println("GBA"); 
     Serial.write(inByte); 
+    Serial.println(" "); 
   }
 }
 

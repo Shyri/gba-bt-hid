@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/Users/shyri/Documents/personal/gba-bt-hid/gba/source/hc05.c" "/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/gba_bt_hid_mb.dir/source/hc05.c.o"
   "/Users/shyri/Documents/personal/gba-bt-hid/gba/source/main.c" "/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/gba_bt_hid_mb.dir/source/main.c.o"
   "/Users/shyri/Documents/personal/gba-bt-hid/gba/source/uart.c" "/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/gba_bt_hid_mb.dir/source/uart.c.o"
   )

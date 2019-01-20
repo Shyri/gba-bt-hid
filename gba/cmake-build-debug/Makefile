@@ -149,6 +149,33 @@ gba_bt_hid_mb/fast:
 	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/build
 .PHONY : gba_bt_hid_mb/fast
 
+source/hc05.o: source/hc05.c.o
+
+.PHONY : source/hc05.o
+
+# target to build an object file
+source/hc05.c.o:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/source/hc05.c.o
+.PHONY : source/hc05.c.o
+
+source/hc05.i: source/hc05.c.i
+
+.PHONY : source/hc05.i
+
+# target to preprocess a source file
+source/hc05.c.i:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/source/hc05.c.i
+.PHONY : source/hc05.c.i
+
+source/hc05.s: source/hc05.c.s
+
+.PHONY : source/hc05.s
+
+# target to generate assembly for a file
+source/hc05.c.s:
+	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/source/hc05.c.s
+.PHONY : source/hc05.c.s
+
 source/main.o: source/main.c.o
 
 .PHONY : source/main.o
@@ -214,6 +241,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... gba_bt_hid_mb"
+	@echo "... source/hc05.o"
+	@echo "... source/hc05.i"
+	@echo "... source/hc05.s"
 	@echo "... source/main.o"
 	@echo "... source/main.i"
 	@echo "... source/main.s"

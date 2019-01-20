@@ -81,7 +81,7 @@ all: CMakeFiles/Target_GBAgba_bt_hid_mb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Target_GBAgba_bt_hid_mb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Target_GBAgba_bt_hid_mb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Target_GBAgba_bt_hid_mb.dir/rule
@@ -118,7 +118,7 @@ all: CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/rule
@@ -145,7 +145,7 @@ clean: CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir/clean
 CMakeFiles/gba_bt_hid_mb.dir/all:
 	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/depend
 	$(MAKE) -f CMakeFiles/gba_bt_hid_mb.dir/build.make CMakeFiles/gba_bt_hid_mb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles --progress-num=3,4,5 "Built target gba_bt_hid_mb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6 "Built target gba_bt_hid_mb"
 .PHONY : CMakeFiles/gba_bt_hid_mb.dir/all
 
 # Include target in all.
@@ -155,7 +155,7 @@ all: CMakeFiles/gba_bt_hid_mb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/gba_bt_hid_mb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gba_bt_hid_mb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/gba_bt_hid_mb.dir/rule

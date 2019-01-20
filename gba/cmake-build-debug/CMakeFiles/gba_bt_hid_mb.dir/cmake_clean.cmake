@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "gba_bt_hid_mb.gba"
   "gba_bt_hid_mb.gba"
+  "CMakeFiles/gba_bt_hid_mb.dir/source/hc05.c.o"
   "CMakeFiles/gba_bt_hid_mb.dir/source/main.c.o"
   "CMakeFiles/gba_bt_hid_mb.dir/source/uart.c.o"
   "gba_bt_hid_mb.pdb"
