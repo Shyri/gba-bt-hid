@@ -42,6 +42,13 @@ void sendGamepad(int xAxis, int yAxis, int zAxis, int rAxis, int buttons1, int b
     uartWrite(buttons2);
 }
 
+bool checkPaired() {
+    unsigned char message[50];
+    uartReadMessage(message);
+
+    return prefix("%CONNECT", message);
+}
+
 void sendDisconnect() {
     uartWrite(0x00);
     uartWrite(0x0D);

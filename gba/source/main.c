@@ -54,10 +54,10 @@ uint16_t getCurrentButtons() {
 }
 
 void clearConsole() {
-    printf("\x1b[8;1H                    \n");
-    printf("\x1b[9;1H                    \n");
-    printf("\x1b[10;10H                  \n");
-    printf("\x1b[11;10H                  \n");
+    printf("\x1b[8;0H                              \n");
+    printf("\x1b[9;0H                              \n");
+    printf("\x1b[10;0H                              \n");
+    printf("\x1b[11;10H                              \n");
 }
 
 void sendButtons() {
@@ -81,20 +81,20 @@ void resetButtons() {
 
 void autoConnect() {
     clearConsole();
-    printf("\x1b[8;10HConnecting...\n");
+    printf("\x1b[9;9HConnecting...\n");
 
     if (startCommandMode()) {
         status = CONNECTING;
         if (connectLast()) {
             status = CONNECTED;
-            printf("\x1b[8;10HConnected!\n");
+            printf("\x1b[9;10HConnected!\n");
         } else {
-            printf("\x1b[8;10HConnection Failed!\n");
+            printf("\x1b[9;6HConnection Failed!\n");
             status = DISCOVERING;
         }
     } else {
         status = DISCOVERING;
-        printf("\x1b[8;10HConnection Failed!\n");
+        printf("\x1b[9;6HConnection Failed!\n");
     }
 }
 
@@ -154,7 +154,7 @@ int main(void) {
     consoleDemoInit();
 
     printf("\x1b[8;1HDiscovery Mode Enabled\n");
-    printf("\x1b[10;1HPress A to pair with last device\n");
+    printf("\x1b[10;1HPress A to pair last device\n");
 
     initUART(SIO_9600);
 
@@ -171,7 +171,13 @@ int main(void) {
 
         switch (status) {
             case DISCOVERING:
-                // TODO Read message to see if paired with device
+                if(checkPaired()) {
+                    status = CONNECTED;
+                    clearConsole();
+                    printf("\x1b[9;10HConnected!\n");
+                    break;
+                }
+
                 if (keys_pressed & KEY_A) {
                     autoConnect();
                 }

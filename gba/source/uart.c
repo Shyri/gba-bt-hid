@@ -28,7 +28,13 @@ unsigned char uartRead() {
     //REG_RCNT = REG_RCNT & (0x0020 ^ 0xFFFF);
 
     // Wait until we have a full byte (The recv data flag will go to 0)
-    while(REG_SIOCNT & 0x0020);
+    int i = 500000;
+    do {
+        i--;
+        if(i == 0) {
+            return 0x00;
+        }
+    } while(REG_SIOCNT & 0x0020);
 
     // Return the character in the data register
     return (unsigned char) REG_SIODATA8;
