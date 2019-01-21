@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/shyri/Documents/personal/gba-bt-hid/gba/source/hc05.c
-gba.h
--
-string.h
--
-uart.h
-/Users/shyri/Documents/personal/gba-bt-hid/gba/source/uart.h
-
 /Users/shyri/Documents/personal/gba-bt-hid/gba/source/hc05.h
 
 /Users/shyri/Documents/personal/gba-bt-hid/gba/source/main.c
@@ -39,14 +31,6 @@ uart.h
 /Users/shyri/Documents/personal/gba-bt-hid/gba/source/uart.h
 hc05.h
 /Users/shyri/Documents/personal/gba-bt-hid/gba/source/hc05.h
-
-/Users/shyri/Documents/personal/gba-bt-hid/gba/source/uart.c
-gba.h
--
-stdio.h
--
-uart.h
-/Users/shyri/Documents/personal/gba-bt-hid/gba/source/uart.h
 
 /Users/shyri/Documents/personal/gba-bt-hid/gba/source/uart.h
 

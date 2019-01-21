@@ -28,8 +28,8 @@ typedef enum HC05_BUTTONS {
     BUTTON_B		=	(1<<1),
     BUTTON_L	=	(1<<4),
     BUTTON_R	=	(1<<5),
-    BUTTON_SELECT	=	(1<<6),
-    BUTTON_START	=	(1<<7),
+    BUTTON_SELECT	=	(1<<4),
+    BUTTON_START	=	(1<<5),
     PAD_DOWN   = 0x7F,
     PAD_UP   = 0x80,
     PAD_RIGHT   = 0x7F,
@@ -61,14 +61,13 @@ void clearConsole() {
 }
 
 void sendButtons() {
-    if(lastAxis == getCurrentAxises() && lastButtons == getCurrentButtons()) {
-        return;
+    //printf("\x1b[8;1HLast:  %d\n", lastAxis);
+    if(lastAxis != getCurrentAxises() || lastButtons != getCurrentButtons()) {
+        sendGamepad(xAxis, yAxis, zAxis, rAxis, buttons1, buttons2);
+
+        lastAxis = getCurrentAxises();
+        lastButtons = getCurrentButtons();
     }
-
-    sendGamepad(xAxis, yAxis, zAxis, rAxis, buttons1, buttons2);
-
-    lastAxis = getCurrentAxises();
-    lastButtons = getCurrentButtons();
 }
 
 void resetButtons() {
@@ -109,21 +108,19 @@ void processButtons(int keys_pressed) {
     }
 
     if (keys_pressed & KEY_L) {
-        buttons2 = buttons1 | BUTTON_L;
+        buttons1 = buttons1 | BUTTON_L;
     }
 
     if (keys_pressed & KEY_R) {
-        buttons2 = buttons1 | BUTTON_R;
+        buttons1 = buttons1 | BUTTON_R;
     }
-
 
     if (keys_pressed & KEY_START) {
-        buttons2 = buttons1 | BUTTON_START;
+        buttons2 = buttons2 | BUTTON_START;
     }
 
-
     if (keys_pressed & KEY_SELECT) {
-        buttons2 = buttons1 | BUTTON_SELECT;
+        buttons2 = buttons2 | BUTTON_SELECT;
     }
 
     if (keys_pressed & KEY_UP) {
@@ -170,12 +167,11 @@ int main(void) {
 
         scanKeys();
 
-        keys_pressed = keysDown();
+        keys_pressed = keysHeld();
 
         switch (status) {
             case DISCOVERING:
                 // TODO Read message to see if paired with device
-                // TODO check A button
                 if (keys_pressed & KEY_A) {
                     autoConnect();
                 }
