@@ -28,7 +28,7 @@ unsigned char uartRead() {
     //REG_RCNT = REG_RCNT & (0x0020 ^ 0xFFFF);
 
     // Wait until we have a full byte (The recv data flag will go to 0)
-    int i = 500000;
+    int i = UART_READ_TIMEOUT;
     do {
         i--;
         if(i == 0) {

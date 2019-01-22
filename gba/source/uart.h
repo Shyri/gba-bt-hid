@@ -15,6 +15,7 @@
 #define SIO_USE_PARITY    0x0200
 #define SIO_SEND_ENABLE   0x0400
 #define SIO_RECV_ENABLE   0x0800
+#define UART_READ_TIMEOUT 50000
 
 void initUART(short baudRate);
 void uartWrite(unsigned char data);

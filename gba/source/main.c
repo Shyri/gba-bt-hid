@@ -13,6 +13,7 @@
 //---------------------------------------------------------------------------------
 // Program entry point
 //---------------------------------------------------------------------------------
+#define DISCONNECT_COUNTER 150
 
 unsigned char xAxis = 0x00;
 unsigned char yAxis = 0x00;
@@ -22,6 +23,7 @@ unsigned char buttons1 = 0x00;
 unsigned char buttons2 = 0x00;
 uint32_t lastAxis = 0x00000000;
 uint16_t lastButtons = 0x0000;
+uint32_t disconnectCounter = 0;
 
 typedef enum HC05_BUTTONS {
     BUTTON_A		=	(1<<0),
@@ -79,6 +81,13 @@ void resetButtons() {
     buttons2 = 0x00;
 }
 
+void enableDiscovery() {
+    clearConsole();
+    printf("\x1b[8;1HDiscovery Mode Enabled\n");
+    printf("\x1b[10;1HPress A to pair last device\n");
+    status = DISCOVERING;
+}
+
 void autoConnect() {
     clearConsole();
     printf("\x1b[9;9HConnecting...\n");
@@ -87,6 +96,7 @@ void autoConnect() {
         status = CONNECTING;
         if (connectLast()) {
             status = CONNECTED;
+            clearConsole();
             printf("\x1b[9;10HConnected!\n");
         } else {
             printf("\x1b[9;6HConnection Failed!\n");
@@ -96,6 +106,13 @@ void autoConnect() {
         status = DISCOVERING;
         printf("\x1b[9;6HConnection Failed!\n");
     }
+}
+
+void disconnect() {
+    status = DISCONNECTING;
+    printf("\x1b[9;6HDisconnecting...\n");
+    sendDisconnect();
+    enableDiscovery();
 }
 
 void processButtons(int keys_pressed) {
@@ -117,6 +134,13 @@ void processButtons(int keys_pressed) {
 
     if (keys_pressed & KEY_START) {
         buttons2 = buttons2 | BUTTON_START;
+        disconnectCounter++;
+        if(disconnectCounter == DISCONNECT_COUNTER) {
+            disconnect();
+            return;
+        }
+    } else {
+        disconnectCounter = 0;
     }
 
     if (keys_pressed & KEY_SELECT) {
@@ -153,8 +177,7 @@ int main(void) {
 
     consoleDemoInit();
 
-    printf("\x1b[8;1HDiscovery Mode Enabled\n");
-    printf("\x1b[10;1HPress A to pair last device\n");
+    enableDiscovery();
 
     initUART(SIO_9600);
 
