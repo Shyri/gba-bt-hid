@@ -5,29 +5,14 @@
 #include <stdio.h>
 #include "uart.h"
 
-bool sending = false;
-
-void serialInterrupt() {
-    sending = false;
-}
-
 void initUART(short baudRate) {
     REG_RCNT = R_UART; // RCNT Mode Selection, in Normal/Multiplayer/UART modes (R/W)
     REG_SIOCNT = 0; // Reset SIO Control Register
-    REG_SIOCNT = baudRate | SIO_LENGTH_8 | SIO_SEND_ENABLE | SIO_RECV_ENABLE | SIO_USE_FIFO | SIO_IRQ | SIO_UART;
-    irqSet(IRQ_VBLANK, serialInterrupt);
-    irqEnable(IRQ_SERIAL);
+    REG_SIOCNT = baudRate | SIO_LENGTH_8 | SIO_SEND_ENABLE | SIO_RECV_ENABLE | SIO_USE_FIFO | SIO_UART;
 }
 
 unsigned char uartRead() {
-
-    // Reset receive data flag
-    REG_SIOCNT = REG_SIOCNT | 0x0020;
-
-    // We're using CTS so we must send a LO on the SD terminal to show we're ready
-    //REG_RCNT = REG_RCNT & (0x0020 ^ 0xFFFF);
-
-    // Wait until we have a full byte (The recv data flag will go to 0)
+    // Wait until we have a full byte or timeout (The recv data flag will go 0)
     int i = UART_READ_TIMEOUT;
     do {
         i--;
@@ -41,11 +26,9 @@ unsigned char uartRead() {
 }
 
 void uartWrite(unsigned char data) {
-    // Wait until we have a CTS signal
-    while(sending || (REG_RCNT & 0x0010));
+    while(REG_SIOCNT & 0x0010);
 
-    sending = true;
-    // Bung our byte into the data register
+    // Write byte to Data register
     REG_SIODATA8 = data;
 }
 

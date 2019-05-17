@@ -18,6 +18,8 @@
 #define UART_READ_TIMEOUT 50000
 
 void initUART(short baudRate);
+//unsigned char uartRead(int timeout);
+unsigned char uartRead();
 void uartWrite(unsigned char data);
 void uartReadMessage(unsigned char * message);
 void uartSendMessage(char * message);

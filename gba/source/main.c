@@ -28,14 +28,14 @@ uint32_t disconnectCounter = 0;
 typedef enum HC05_BUTTONS {
     BUTTON_A		=	(1<<0),
     BUTTON_B		=	(1<<1),
-    BUTTON_L	=	(1<<4),
-    BUTTON_R	=	(1<<5),
+    BUTTON_L	    =	(1<<4),
+    BUTTON_R	    =	(1<<5),
     BUTTON_SELECT	=	(1<<4),
     BUTTON_START	=	(1<<5),
-    PAD_DOWN   = 0x7F,
-    PAD_UP   = 0x80,
-    PAD_RIGHT   = 0x7F,
-    PAD_LEFT   = 0x80
+    PAD_DOWN        =   0x7F,
+    PAD_UP          =   0x80,
+    PAD_RIGHT       =   0x7F,
+    PAD_LEFT        =   0x80
 } HC05_BUTTONS_BITS;
 
 typedef enum STATUS {
@@ -60,6 +60,9 @@ void clearConsole() {
     printf("\x1b[9;0H                              \n");
     printf("\x1b[10;0H                              \n");
     printf("\x1b[11;10H                              \n");
+    printf("\x1b[12;10H                              \n");
+    printf("\x1b[13;10H                              \n");
+    printf("\x1b[14;10H                              \n");
 }
 
 void sendButtons() {
@@ -94,17 +97,10 @@ void autoConnect() {
 
     if (startCommandMode()) {
         status = CONNECTING;
-        if (connectLast()) {
-            status = CONNECTED;
-            clearConsole();
-            printf("\x1b[9;10HConnected!\n");
-        } else {
-            printf("\x1b[9;6HConnection Failed!\n");
-            status = DISCOVERING;
-        }
+        connectLast();
     } else {
-        status = DISCOVERING;
-        printf("\x1b[9;6HConnection Failed!\n");
+        enableDiscovery();
+        printf("\x1b[14;5HConnection Failed :(\n");
     }
 }
 
@@ -179,7 +175,7 @@ int main(void) {
 
     enableDiscovery();
 
-    initUART(SIO_9600);
+    initUART(SIO_115200);
 
     while (1) {
         int keys_pressed;
@@ -194,15 +190,17 @@ int main(void) {
 
         switch (status) {
             case DISCOVERING:
+                if (keys_pressed & KEY_A) {
+                    autoConnect();
+                }
+                break;
+            case CONNECTING:
                 if(checkPaired()) {
                     status = CONNECTED;
                     clearConsole();
                     printf("\x1b[9;10HConnected!\n");
+                    printf("\x1b[11;3HHold Start to disconnect\n");
                     break;
-                }
-
-                if (keys_pressed & KEY_A) {
-                    autoConnect();
                 }
                 break;
             case CONNECTED:
