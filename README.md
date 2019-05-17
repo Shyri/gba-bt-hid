@@ -7,7 +7,7 @@ Three steps are needed to achieve this:
 
 [DONE] 2. Make a small program to load a GBA rom using multiboot through link cable port.
 
-[TODO] 3. Write a GBA program that communicates with HC-05 through link cable port to manage bluetooth connections and HID commands
+[DONE] 3. Write a GBA program that communicates with HC-05 through link cable port to manage bluetooth connections and HID commands
 
 
 More documentation to be added when finished.
