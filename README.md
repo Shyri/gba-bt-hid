@@ -16,7 +16,7 @@ Additional 74XX157 quad 2-input multiplexer makes possible to multiplex SPI to r
 
 The whole circuit runs at 3.3V provided by GBA through the link port.
 
-Final version of the circuit includes a 6 pin port that allows to reprogram the atmega if necessary. Also it lets to turn the atmega into a special write mode to reprogram the flash memory. 
+Final version of the circuit includes a 6 pin port that allows to reprogram the atmega if necessary. Also it lets to turn the atmega into a special write mode to reprogram the flash memory. You can find the code for the memory programmer [here](gba-hid-fw-flasher) it needs to run in a separate board (not arduino due to the large size of the rom to program, I used a Stellaris Launchpad)
 
 There's a KiCad project [here](circuit) that includes this diagram:
 ![Diagram](images/Diagram.png?raw=true "GBA")
