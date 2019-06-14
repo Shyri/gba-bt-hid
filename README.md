@@ -1,8 +1,11 @@
 ## GBA Bluetooth HID ##
 Turn your Game Boy Advance into a Bluetooth Controller :)
-![Gameboy](images/DSC_0244.jpg?raw=true "GBA")
 
-Quick Explanation on how it works:
+![Gameboy](images/DSC_0244.JPG?raw=true "GBA")
+### How to use it: ###
+After launching the rom the bluetooth module enters discoverable mode. This means you can pair to it from whatever device you are going to use it with (PC, phone, Android TV...). After pairing the program will start sending keys to the device. The device address is stored so next time you launch you just have to press A to automatically connect to that device.
+
+### How it works: ###
 The [gba](gba) contains the code for a GBA program that uses the link port to communicate with a HC-05 bluetooth module using UAR (HC-05 flashed with RN-42 firmware, find how to do it in the links at the bottom).
 
 This rom is stored in a W25Q32 flash chip. An Atmega328P performs a multiboot sequence reading from this chip and sending to the GBA through the link port. You can find the Atmega code [here](gba-bt-hid-fw) (It is actually written for arduino so you'll need to burn arduino's bootloader if you want to use it).
@@ -18,7 +21,8 @@ Final version of the circuit includes a 6 pin port that allows to reprogram the 
 There's a KiCad project [here](circuit) that includes this diagram:
 ![Diagram](images/Diagram.png?raw=true "GBA")
 
-![Gameboy](images/DSC_0244.jpg?raw=true "GBA")
+![Gameboy](images/DSC_0245.jpeg?raw=true "GBA")
+![Gameboy](images/DSC_0241.jpg?raw=true "GBA")
 ### Links that helped me to get this done: ###
 
 HC-05 as bluetooth HID device:
