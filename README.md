@@ -6,7 +6,7 @@ Turn your Game Boy Advance into a Bluetooth Controller :)
 After launching the rom the bluetooth module enters discoverable mode. This means you can pair to it from whatever device you are going to use it with (PC, phone, Android TV...). After pairing the program will start sending keys to the device. The device address is stored so next time you launch you just have to press A to automatically connect to that device.
 
 ### How it works: ###
-The [gba](gba) contains the code for a GBA program that uses the link port to communicate with a HC-05 bluetooth module using UAR (HC-05 flashed with RN-42 firmware, find how to do it in the links at the bottom).
+The [gba](gba) contains the code for a GBA program that uses the link port to communicate with a HC-05 bluetooth module using UART (HC-05 flashed with RN-42 firmware, find how to do it in the links at the bottom).
 
 This rom is stored in a W25Q32 flash chip. An Atmega328P performs a multiboot sequence reading from this chip and sending to the GBA through the link port. You can find the Atmega code [here](gba-bt-hid-fw) (It is actually written for arduino so you'll need to burn arduino's bootloader if you want to use it).
 
