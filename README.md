@@ -23,6 +23,9 @@ There's a KiCad project [here](circuit) that includes this diagram:
 
 ![Gameboy](images/DSC_0245.jpeg?raw=true "GBA")
 ![Gameboy](images/DSC_0241.jpg?raw=true "GBA")
+
+Terrible soldering skills I know...
+
 ### Links that helped me to get this done: ###
 
 HC-05 as bluetooth HID device:
