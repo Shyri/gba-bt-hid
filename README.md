@@ -12,7 +12,7 @@ This rom is stored in a W25Q32 flash chip. An Atmega328P performs a multiboot se
 
 Once multiboot ends, the gba program runs and talks to the HC-05 to handle bluetooth connection, and key presses.
 
-Additional 74XX157 quad 2-input multiplexer makes possible to multiplex SPI to read from the flash chip and send the multiboot, it alternates byte reads from the flash chip and send them to the GBA. Then usin hcf4066 siwtch link port pins are switched from the spi to the HC-05 uart pins.
+Additional 74XX157 quad 2-input multiplexer makes possible to multiplex SPI to read from the flash chip and send the multiboot, it alternates byte reads from the flash chip and send them to the GBA. Then using hcf4066 switch link port pins are switched from the spi to the HC-05 uart pins.
 
 The whole circuit runs at 3.3V provided by GBA through the link port.
 
