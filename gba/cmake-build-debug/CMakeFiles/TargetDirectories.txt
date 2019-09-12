@@ -1,5 +1,0 @@
-/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/Target_GBAgba_bt_hid_mb.dir
-/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/TargetObjCopy_gba_bt_hid_mb.dir
-/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/shyri/Documents/personal/gba-bt-hid/gba/cmake-build-debug/CMakeFiles/gba_bt_hid_mb.dir

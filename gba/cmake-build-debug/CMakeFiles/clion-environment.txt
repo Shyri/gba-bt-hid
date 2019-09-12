@@ -1,3 +1,0 @@
-ToolSet: 1.0 (local)Options: 
-
-Options:-DGBAFIX_EXE=/opt/devkitpro/tools/bin/gbafix
