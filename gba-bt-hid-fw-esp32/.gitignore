@@ -1,0 +1,9 @@
+# Intellij
+*.iml
+.idea
+
+# GB Roms
+*.gba
+
+cmake-build-debug/*
+build
