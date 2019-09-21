@@ -86,11 +86,12 @@ void sendHandshake(uint32_t rv) {
 void sendROMHeader() {
     printf("Sending ROM Header");
     uint32_t block;
-
+    memset(&block, 0, sizeof(uint32_t));
     // Send Header in blocks of two bytes
     for (uint32_t i = 0; i <= 0x5f; i++) {
-        block = header[2 * i];
-        block = header[2 * i + 1] << 8 | block;
+//        TODO
+//        block = gba_header[2 * i];
+//        block = gba_header[2 * i + 1] << 8 | block;
         fcnt += 2;
 
         send(block);
@@ -101,132 +102,133 @@ void sendROMHeader() {
     printf("%X", rv);
 }
 
-void multiboot() {
-    initSPI();
-
-    long romLength = sizeof(rom);
-    uint32_t rom_size = sizeof(header) + romLength;
-    rom_size = (rom_size + 0xf) & 0xFFFFFFF0; // Align rom length to 16
-    printf("ROM Size:\n");
-    printf("%X\n", rom_size);
-
-    uint32_t rv;
-
-    printf("Waiting for GBA\n");
-    while (rv != 0x72026202) {
-        rv = send(0x00006202);
-    }
-    printf("GBA Found: \n");
-    printf("%X\n", rv);
-
-    rv = 0;
-
-    send(0x00006202); // Found GBA
-    send(0x00006102); // Recognition OK
-
-    sendROMHeader();  // Transfer C0h bytes header data in units of 16bits with no encrpytion
-
-    rv = send(0x00006202); // Exchange master/slave info again
-    printf("%X\n", rv);
-
-    printf("Sending Palette\n");
-    // palette_data as "81h+color*10h+direction*8+speed*2", or as "0f1h+color*2" for fixed palette, whereas color=0..6, speed=0..3, direction=0..1.
-    // Then wait until 0x73hh**** is received. hh represents client_data
-    while (((rv >> 24) & 0xFF) != 0x73) {
-        rv = send(0x000063D1);
-        printf("%X\n", rv);
-    }
-
-    uint32_t client_data = ((rv >> 16) & 0xFF); // Random client generated data used for later handshake
-    printf("Client Data:");
-    printf("%X\n", client_data);
-
-    uint32_t m = ((rv & 0x00ff0000) >> 8) + 0xffff00d1;
-    uint32_t h = ((rv & 0x00ff0000) >> 16) + 0xf;
-
-    sendHandshake(rv);
-
-    printf("Sending length information: ");
-    printf("%X\n", (rom_size - 0x190) / 4);
-    rv = send((rom_size - 0x190) / 4); // Send length information and receive random data[1-3] (seed)
-    printf("%X\n", rv);
-
-    uint32_t f = (((rv & 0x00ff0000) >> 8) + h) | 0xffff0000;
-    uint32_t c = 0x0000c387;
-
-    uint32_t bytes_sent = 0;
-    uint32_t w, w2, bitt;
-    int i = 0;
-
-    printf("Sending ROM\n");
-    while (fcnt < rom_size) {
-        if (bytes_sent == 32) {
-            bytes_sent = 0;
-        }
-
-        w = rom[i] | (rom[i + 1] << 8) | (rom[i + 2] << 16) | (rom[i + 3] << 24);
-
-        i = i + 4;
-        bytes_sent += 4;
-
-        if (fcnt % 0x80 == 0 || fcnt > 63488 || fcnt == rom_size) {
-            printf("%X", fcnt);
-            printf("/");
-            printf("%X\n", rom_size);
-        }
-
-
-        w2 = w;
-
-        for (bitt = 0; bitt < 32; bitt++) {
-            if ((c ^ w) & 0x01) {
-                c = (c >> 1) ^ 0x0000c37b;
-            } else {
-                c = c >> 1;
-            }
-            w = w >> 1;
-        }
-
-
-        m = (0x6f646573 * m) + 1;
-        rv = send(w2 ^ ((~(0x02000000 + fcnt)) + 1) ^ m ^ 0x43202f2f);
-
-        fcnt = fcnt + 4;
-    }
-    printf("%X\n", rv);
-    printf("ROM sent! Doing checksum now...\ne");
-
-
-    for (bitt = 0; bitt < 32; bitt++) {
-        if ((c ^ f) & 0x01) {
-            c = (c >> 1) ^ 0x0000c37b;
-        } else {
-            c = c >> 1;
-        }
-
-        f = f >> 1;
-    }
-    printf("CRC: ");
-    printf("%X\n", c);
-
-    printf("Waiting for CRC\n");
-    while (rv != 0x00750065) {
-        rv = send(0x00000065);
-    }
-
-
-    rv = send(0x00000066);
-    printf("%X\n", rv);
-
-    printf("Exchanging CRC\n");
-    rv = send(c);
-    printf("%X\n", rv);
-
-    printf("Done!\n");
-
-
-    // ENABLE UART
-//    digitalWrite(MB_PIN, LOW);
-//    digitalWrite(UART_PIN, HIGH);
-}
-
+//void multiboot() {
+//    initSPI();
+//
+//    long romLength = sizeof(rom);
+//    uint32_t rom_size = sizeof(header) + romLength;
+//    rom_size = (rom_size + 0xf) & 0xFFFFFFF0; // Align rom length to 16
+//    printf("ROM Size:\n");
+//    printf("%X\n", rom_size);
+//
+//    uint32_t rv;
+//    memset(&rv, 0, sizeof(uint32_t));
+//
+//    printf("Waiting for GBA\n");
+//    while (rv != 0x72026202) {
+//        rv = send(0x00006202);
+//    }
+//    printf("GBA Found: \n");
+//    printf("%X\n", rv);
+//
+//    rv = 0;
+//
+//    send(0x00006202); // Found GBA
+//    send(0x00006102); // Recognition OK
+//
+//    sendROMHeader();  // Transfer C0h bytes header data in units of 16bits with no encrpytion
+//
+//    rv = send(0x00006202); // Exchange master/slave info again
+//    printf("%X\n", rv);
+//
+//    printf("Sending Palette\n");
+//    // palette_data as "81h+color*10h+direction*8+speed*2", or as "0f1h+color*2" for fixed palette, whereas color=0..6, speed=0..3, direction=0..1.
+//    // Then wait until 0x73hh**** is received. hh represents client_data
+//    while (((rv >> 24) & 0xFF) != 0x73) {
+//        rv = send(0x000063D1);
+//        printf("%X\n", rv);
+//    }
+//
+//    uint32_t client_data = ((rv >> 16) & 0xFF); // Random client generated data used for later handshake
+//    printf("Client Data:");
+//    printf("%X\n", client_data);
+//
+//    uint32_t m = ((rv & 0x00ff0000) >> 8) + 0xffff00d1;
+//    uint32_t h = ((rv & 0x00ff0000) >> 16) + 0xf;
+//
+//    sendHandshake(rv);
+//
+//    printf("Sending length information: ");
+//    printf("%X\n", (rom_size - 0x190) / 4);
+//    rv = send((rom_size - 0x190) / 4); // Send length information and receive random data[1-3] (seed)
+//    printf("%X\n", rv);
+//
+//    uint32_t f = (((rv & 0x00ff0000) >> 8) + h) | 0xffff0000;
+//    uint32_t c = 0x0000c387;
+//
+//    uint32_t bytes_sent = 0;
+//    uint32_t w, w2, bitt;
+//    int i = 0;
+//
+//    printf("Sending ROM\n");
+//    while (fcnt < rom_size) {
+//        if (bytes_sent == 32) {
+//            bytes_sent = 0;
+//        }
+//
+//        w = rom[i] | (rom[i + 1] << 8) | (rom[i + 2] << 16) | (rom[i + 3] << 24);
+//
+//        i = i + 4;
+//        bytes_sent += 4;
+//
+//        if (fcnt % 0x80 == 0 || fcnt > 63488 || fcnt == rom_size) {
+//            printf("%X", fcnt);
+//            printf("/");
+//            printf("%X\n", rom_size);
+//        }
+//
+//
+//        w2 = w;
+//
+//        for (bitt = 0; bitt < 32; bitt++) {
+//            if ((c ^ w) & 0x01) {
+//                c = (c >> 1) ^ 0x0000c37b;
+//            } else {
+//                c = c >> 1;
+//            }
+//            w = w >> 1;
+//        }
+//
+//
+//        m = (0x6f646573 * m) + 1;
+//        rv = send(w2 ^ ((~(0x02000000 + fcnt)) + 1) ^ m ^ 0x43202f2f);
+//
+//        fcnt = fcnt + 4;
+//    }
+//    printf("%X\n", rv);
+//    printf("ROM sent! Doing checksum now...\ne");
+//
+//
+//    for (bitt = 0; bitt < 32; bitt++) {
+//        if ((c ^ f) & 0x01) {
+//            c = (c >> 1) ^ 0x0000c37b;
+//        } else {
+//            c = c >> 1;
+//        }
+//
+//        f = f >> 1;
+//    }
+//    printf("CRC: ");
+//    printf("%X\n", c);
+//
+//    printf("Waiting for CRC\n");
+//    while (rv != 0x00750065) {
+//        rv = send(0x00000065);
+//    }
+//
+//
+//    rv = send(0x00000066);
+//    printf("%X\n", rv);
+//
+//    printf("Exchanging CRC\n");
+//    rv = send(c);
+//    printf("%X\n", rv);
+//
+//    printf("Done!\n");
+//
+//
+//    // ENABLE UART
+////    digitalWrite(MB_PIN, LOW);
+////    digitalWrite(UART_PIN, HIGH);
+//}
+//
