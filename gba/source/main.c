@@ -1,12 +1,9 @@
 #include <gba_console.h>
-#include <gba_video.h>
 #include <gba_interrupt.h>
 #include <gba_systemcalls.h>
 #include <gba_input.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <gba.h>
-#include <string.h>
 #include "uart.h"
 #include "hc05.h"
 
@@ -26,16 +23,16 @@ uint16_t lastButtons = 0x0000;
 uint32_t disconnectCounter = 0;
 
 typedef enum HC05_BUTTONS {
-    BUTTON_A		=	(1<<0),
-    BUTTON_B		=	(1<<1),
-    BUTTON_L	    =	(1<<4),
-    BUTTON_R	    =	(1<<5),
-    BUTTON_SELECT	=	(1<<4),
-    BUTTON_START	=	(1<<5),
-    PAD_DOWN        =   0x7F,
-    PAD_UP          =   0x80,
-    PAD_RIGHT       =   0x7F,
-    PAD_LEFT        =   0x80
+    BUTTON_A = (1 << 0),
+    BUTTON_B = (1 << 1),
+    BUTTON_L = (1 << 4),
+    BUTTON_R = (1 << 5),
+    BUTTON_SELECT = (1 << 4),
+    BUTTON_START = (1 << 5),
+    PAD_DOWN = 0x7F,
+    PAD_UP = 0x80,
+    PAD_RIGHT = 0x7F,
+    PAD_LEFT = 0x80
 } HC05_BUTTONS_BITS;
 
 typedef enum STATUS {
@@ -67,7 +64,7 @@ void clearConsole() {
 
 void sendButtons() {
     //printf("\x1b[8;1HLast:  %d\n", lastAxis);
-    if(lastAxis != getCurrentAxises() || lastButtons != getCurrentButtons()) {
+    if (lastAxis != getCurrentAxises() || lastButtons != getCurrentButtons()) {
         sendGamepad(xAxis, yAxis, zAxis, rAxis, buttons1, buttons2);
 
         lastAxis = getCurrentAxises();
@@ -131,7 +128,7 @@ void processButtons(int keys_pressed) {
     if (keys_pressed & KEY_START) {
         buttons2 = buttons2 | BUTTON_START;
         disconnectCounter++;
-        if(disconnectCounter == DISCONNECT_COUNTER) {
+        if (disconnectCounter == DISCONNECT_COUNTER) {
             disconnect();
             return;
         }
@@ -192,10 +189,15 @@ int main(void) {
             case DISCOVERING:
                 if (keys_pressed & KEY_A) {
                     autoConnect();
+                } else if (checkPaired()) {
+                    status = CONNECTED;
+                    clearConsole();
+                    printf("\x1b[9;10HConnected!\n");
+                    break;
                 }
                 break;
             case CONNECTING:
-                if(checkPaired()) {
+                if (checkPaired()) {
                     status = CONNECTED;
                     clearConsole();
                     printf("\x1b[9;10HConnected!\n");
