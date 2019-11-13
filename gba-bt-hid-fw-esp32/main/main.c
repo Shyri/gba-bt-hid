@@ -1,21 +1,24 @@
-#include <stdio.h>
+//
+// Created by Shyri on 2019-10-22.
+//
 #include "multiboot.h"
-#include "bluetooth.h"
+#include "hc05.h"
 
-void app_main(void) {
-//    initSPI();
-    printf("Initializing bluetooth\n");
-    initBluetooth();
-    while (1) {
-//        printf("Sending Command\n");
-//        uint32_t received = send(0xABCDEF91);
+#define __BTSTACK_FILE__ "main.c"
 
-//        if (received != 0) {
-//            printf("Received: %X\n", received);
-//        } else {
-//            printf("No Response\n");
-//        }
-        printf("looping\n");
-        ets_delay_us(1000000);
-    }
+int btstack_main(int argc, const char *argv[]);
+
+int btstack_main(int argc, const char *argv[]) {
+    multiboot();
+    initHC05();
+
+//    while (1) {
+//        ets_delay_us(1000);
+        //checkHC05();
+//        uint32_t received =  send(rom[0]);
+//        ets_delay_us(1000000);
+//    }
+
+
+    return 0;
 }

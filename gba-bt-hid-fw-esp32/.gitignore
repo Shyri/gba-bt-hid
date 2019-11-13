@@ -2,8 +2,5 @@
 *.iml
 .idea
 
-# GB Roms
-*.gba
-
+build/*
 cmake-build-debug/*
-build

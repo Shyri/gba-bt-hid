@@ -3,4 +3,4 @@
 cmake_minimum_required(VERSION 3.5)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(gba-bt-hid-fw-sp32)
+project(gba-bt-hid-fw-esp32)
