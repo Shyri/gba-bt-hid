@@ -116,9 +116,14 @@ void initBluetooth();
 
 void updateButtons(const char *message);
 
-static void list_link_keys(void);
-
 static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packet, uint16_t packet_size);
+
+void connectLastDevice();
+
+esp_err_t save_addr(bd_addr_t *addr);
+
+esp_err_t read_addr(bd_addr_t *addr);
+
 
 static void read_uart() {
     while (1) {
@@ -169,7 +174,7 @@ void interpretMessage(int length, char *message) {
     if (inCommandMode) {
         if (strncmp((const char *) message, AUTOCONNECT_REQUEST, length - 1) == 0) { // length-1 cause ending 0x0D
             inCommandMode = false;
-            list_link_keys();
+            connectLastDevice();
         }
     } else {
         if (strncmp((const char *) message, COM_MODE_REQUEST, length) == 0) {
@@ -180,6 +185,9 @@ void interpretMessage(int length, char *message) {
             if (message[0] == 0xFD && message[1] == 0x06) {
                 // Get HC-05 buttons
                 updateButtons(message);
+            } else if (message[0] == 0x00 && message[1] == 0x0D) {
+                // Disconnection requested
+                hid_device_disconnect(hid_cid);
             }
         }
     }
@@ -238,6 +246,9 @@ void updateButtons(const char *message) {
 static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packet, uint16_t packet_size) {
     UNUSED(channel);
     UNUSED(packet_size);
+
+    bd_addr_t event_addr;
+
     switch (packet_type) {
         case HCI_EVENT_PACKET:
             switch (packet[0]) {
@@ -248,6 +259,11 @@ static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packe
                             hid_cid = hid_subevent_connection_opened_get_hid_cid(packet);
                             hid_device_request_can_send_now_event(hid_cid); //start loop
                             log_info("HID Connected");
+
+                            hid_subevent_connection_opened_get_bd_addr(packet, event_addr);
+                            char *address = bd_addr_to_str(event_addr);
+                            printf("Saving address: %s\n", address);
+                            save_addr(event_addr);
 
                             connected = true;
 
@@ -282,48 +298,27 @@ static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packe
     }
 }
 
-static void list_link_keys(void) {
-    bd_addr_t addr;
-    link_key_t link_key;
-    link_key_type_t type;
-    btstack_link_key_iterator_t it;
+void connectLastDevice() {
+    bd_addr_t mac_addr;
+    if (read_addr(&mac_addr) == ESP_OK) {
+        char *address = bd_addr_to_str(mac_addr);
+        printf("Saved Address: %s \n", address);
 
-    int ok = gap_link_key_iterator_init(&it);
-    if (!ok) {
-        printf("Link key iterator not implemented\n");
-        return;
+        hid_device_connect(mac_addr, &hid_cid);
+    } else {
+        uartWrite("ERR");
     }
-    printf("Stored link keys: \n");
-    while (gap_link_key_iterator_get_next(&it, addr, link_key, &type)) {
-        printf("%s - type %u, key: ", bd_addr_to_str(addr), (int) type);
-        printf_hexdump(link_key, 16);
-    }
-    printf(".\n");
-    gap_link_key_iterator_done(&it);
-
-    esp_err_t err = nvs_flash_init();
-    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        // NVS partition was truncated and needs to be erased
-        // Retry nvs_flash_init
-        ESP_ERROR_CHECK(nvs_flash_erase());
-        err = nvs_flash_init();
-    }
-    ESP_ERROR_CHECK(err);
-
-
-//    if (gap_link_key_iterator_get_next(&it, addr, link_key, &type)) {
-//        hid_device_connect(addr, &hid_cid);
-//    }
 }
 
-esp_err_t save_addr(char *address) {
+esp_err_t save_addr(bd_addr_t *addr) {
     nvs_handle_t my_handle;
     esp_err_t err;
 
     err = nvs_open(STORAGE_NAMESPACE, NVS_READWRITE, &my_handle);
     if (err != ESP_OK) return err;
 
-    err = nvs_set_blob(my_handle, "mac_addr", address, 6);
+    size_t size = sizeof(bd_addr_t);
+    err = nvs_set_blob(my_handle, "mac_addr", addr, size);
     if (err != ESP_OK) return err;
 
     err = nvs_commit(my_handle);
@@ -334,16 +329,18 @@ esp_err_t save_addr(char *address) {
     return ESP_OK;
 }
 
-void read_addr(char *address) {
+
+esp_err_t read_addr(bd_addr_t *addr) {
     nvs_handle_t my_handle;
     esp_err_t err;
 
     err = nvs_open(STORAGE_NAMESPACE, NVS_READWRITE, &my_handle);
     if (err != ESP_OK) return err;
 
-    nvs_get_blob(my_handle, "mac_addr", address, 6);
+    size_t size = sizeof(bd_addr_t);
+    nvs_get_blob(my_handle, "mac_addr", addr, &size);
     if (err != ESP_OK && err != ESP_ERR_NVS_NOT_FOUND) return err;
 
     nvs_close(my_handle);
-    return ESP_OK;
+    return err;
 }
