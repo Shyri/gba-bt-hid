@@ -7,6 +7,6 @@
 
 #include <stdint.h>
 
-const uint8_t rom[58436];
+const uint8_t rom[58544];
 
 #endif //GBA_BT_HID_FW_ESP32_GBA_ROM_H

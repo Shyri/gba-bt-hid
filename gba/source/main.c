@@ -53,17 +53,17 @@ uint16_t getCurrentButtons() {
 }
 
 void clearConsole() {
+    printf("\x1b[4;0H    GBA BLUETOOTH GAMEPAD\n");
     printf("\x1b[8;0H                              \n");
     printf("\x1b[9;0H                              \n");
     printf("\x1b[10;0H                              \n");
-    printf("\x1b[11;10H                              \n");
-    printf("\x1b[12;10H                              \n");
-    printf("\x1b[13;10H                              \n");
-    printf("\x1b[14;10H                              \n");
+    printf("\x1b[11;0H                              \n");
+    printf("\x1b[12;0H                              \n");
+    printf("\x1b[13;0H                              \n");
+    printf("\x1b[14;0H                              \n");
 }
 
 void sendButtons() {
-    //printf("\x1b[8;1HLast:  %d\n", lastAxis);
     if (lastAxis != getCurrentAxises() || lastButtons != getCurrentButtons()) {
         sendGamepad(xAxis, yAxis, zAxis, rAxis, buttons1, buttons2);
 
@@ -83,8 +83,8 @@ void resetButtons() {
 
 void enableDiscovery() {
     clearConsole();
-    printf("\x1b[8;1HDiscovery Mode Enabled\n");
-    printf("\x1b[10;1HPress A to pair last device\n");
+    printf("\x1b[9;4HDiscovery Mode Enabled\n");
+    printf("\x1b[11;0H Press A to pair last device\n");
     status = DISCOVERING;
 }
 
@@ -103,6 +103,7 @@ void autoConnect() {
 
 void disconnect() {
     status = DISCONNECTING;
+    clearConsole();
     printf("\x1b[9;6HDisconnecting...\n");
     sendDisconnect();
     enableDiscovery();
@@ -168,7 +169,22 @@ int main(void) {
     irqEnable(IRQ_VBLANK);
     REG_IME = 1;
 
-    consoleDemoInit();
+//    consoleDemoInit();
+
+    consoleInit(0,        // charbase
+                4,        // mapbase
+                0,        // background number
+                NULL,    // font
+                0,        // font size
+                15        // 16 color palette
+    );
+
+    // set the screen colors, color 0 is the background color
+    // the foreground color is index 1 of the selected 16 color palette
+    BG_COLORS[0] = RGB8(255, 255, 255);
+    BG_COLORS[241] = RGB8(58, 110, 165);
+
+    SetMode(MODE_0 | BG0_ON);
 
     enableDiscovery();
 
@@ -193,6 +209,7 @@ int main(void) {
                     status = CONNECTED;
                     clearConsole();
                     printf("\x1b[9;10HConnected!\n");
+                    printf("\x1b[11;3HHold Start to disconnect\n");
                     break;
                 }
                 break;

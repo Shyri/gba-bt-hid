@@ -26,20 +26,24 @@
 static bool inCommandMode = false;
 
 typedef enum DESCRIPTOR_BUTTONS {
+    DPAD_N = 0x00,
+    DPAD_NE = 0x01,
+    DPAD_E = 0x02,
+    DPAD_SE = 0x03,
+    DPAD_S = 0x04,
+    DPAD_SW = 0x05,
+    DPAD_W = 0x06,
+    DPAD_NW = 0x07,
     DPAD_RELEASED = 0x08,
-    DPAD_UP = 0x00,
-    DPAD_DOWN = 0x04,
-    DPAD_LEFT = 0x06,
-    DPAD_RIGHT = 0x02,
 
-    HID_KEY_A = 0x40,
+    HID_KEY_A = 0x10,
     HID_KEY_B = 0x20,
 
-    HID_KEY_R = 0x08,
-    HID_KEY_L = 0x04,
+    HID_KEY_R = 0x40,
+    HID_KEY_L = 0x80,
 
-    HID_KEY_START = 0x20,
-    HID_KEY_SELECT = 0x10,
+    HID_KEY_START = 0x01,
+    HID_KEY_SELECT = 0x02,
 
 } DESCRIPTOR_BUTTONs_BITS;
 
@@ -82,7 +86,7 @@ const uint8_t hid_descriptor_gamecube[] = {
         0x15, 0x00,        //   Logical Minimum (0)
         0x25, 0x01,        //   Logical Maximum (1)
         0x75, 0x01,        //   Report Size (1)
-        0x95, 0x06,        //   Report Count (6)
+        0x95, 0x0E,        //   Report Count (14)
         0x81, 0x02,        //   Input (Data,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
         //Padding
         0x06, 0x00, 0xFF,  //   Usage Page (Vendor Defined 0xFF00)
@@ -96,15 +100,17 @@ const uint8_t hid_descriptor_gamecube[] = {
         0xc0
 };
 
-static uint8_t send_report[] = {0xa1, 0x11, 0xc0, 0x00, 0x08, 0, 0};
+static uint8_t send_report[] = {0xa1, 0x11, 0xc0, 0x00, 0x08, 0};
 
 static uint8_t hid_service_buffer[400];
 static uint8_t device_id_sdp_service_buffer[400];
 static const char hid_device_name[] = DEVICE_NAME;
 static uint16_t hid_cid = 0;
 
-static uint8_t but1_send = 0;
+static uint8_t but1_send = DPAD_RELEASED;
 static uint8_t but2_send = 0;
+static uint8_t but1_count = 0;
+static uint8_t but2_count = 0;
 
 static bool connected = false;
 
@@ -193,6 +199,12 @@ void interpretMessage(int length, char *message) {
     }
 }
 
+void bin(unsigned n) { 
+    unsigned i; 
+    for (i = 1 << 7; i > 0; i = i / 2) 
+        (n & i)? printf("1"): printf("0"); 
+} 
+
 void updateButtons(const char *message) {
     uint8_t xAxis = message[2];
     uint8_t yAxis = message[3];
@@ -204,13 +216,25 @@ void updateButtons(const char *message) {
     but2_send = 0;
 
     if (yAxis == PAD_DOWN) {
-        dpad = DPAD_DOWN;
+        if (xAxis == PAD_LEFT) {
+            dpad = DPAD_SW;
+        } else if (xAxis == PAD_RIGHT) {
+            dpad = DPAD_SE;
+        } else {
+            dpad = DPAD_S;
+        }
     } else if (yAxis == PAD_UP) {
-        dpad = DPAD_UP;
+        if (xAxis == PAD_LEFT) {
+            dpad = DPAD_NW;
+        } else if (xAxis == PAD_RIGHT) {
+            dpad = DPAD_NE;
+        } else {
+            dpad = DPAD_N;
+        }
     } else if (xAxis == PAD_LEFT) {
-        dpad = DPAD_LEFT;
+            dpad = DPAD_W;
     } else if (xAxis == PAD_RIGHT) {
-        dpad = DPAD_RIGHT;
+            dpad = DPAD_E;
     } else {
         dpad = DPAD_RELEASED;
     }
@@ -224,11 +248,11 @@ void updateButtons(const char *message) {
     }
 
     if (buttons1 & BUTTON_L) {
-        but2_send += HID_KEY_L;
+        but1_send += HID_KEY_L;
     }
 
     if (buttons1 & BUTTON_R) {
-        but2_send += HID_KEY_R;
+        but1_send += HID_KEY_R;
     }
 
     if (buttons2 & BUTTON_START) {
@@ -238,8 +262,14 @@ void updateButtons(const char *message) {
     if (buttons2 & BUTTON_SELECT) {
         but2_send += HID_KEY_SELECT;
     }
-
+    
     but1_send += dpad;
+
+    printf("but1: ");
+    bin((uint8_t) but1_send);
+    printf("\nbut2: ");
+    bin((uint8_t) but2_send);
+    printf("\n");
 }
 
 
@@ -275,6 +305,8 @@ static void packet_handler(uint8_t packet_type, uint16_t channel, uint8_t *packe
                             hid_cid = 0;
                             break;
                         case HID_SUBEVENT_CAN_SEND_NOW:
+
+//                            printf("but2_send 0x%.2X \n", (uint8_t) but2_send);
                             send_report[4] = but1_send;
                             send_report[5] = but2_send;
                             hid_device_send_interrupt_message(hid_cid, &send_report[0], sizeof(send_report));
