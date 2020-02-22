@@ -15,9 +15,4 @@ uint32_t send(uint32_t command);
 
 void multiboot();
 
-//
-//const uint8_t gba_rom[] = {
-//
-//};
-
 #endif //GBA_BT_HID_FW_SP32_MULTIBOOT_H

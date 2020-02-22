@@ -245,10 +245,6 @@ void multiboot() {
 
     printf("Done!\n");
 
-
-    // ENABLE UART
-//    digitalWrite(MB_PIN, LOW);
-//    digitalWrite(UART_PIN, HIGH);
     shutdownSPI();
     printf("SPI shut down\n");
 }

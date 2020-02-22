@@ -35,7 +35,6 @@ uint8_t *data;
 
 void initUART() {
     printf("Initializing UART\n");
-//    const int uart_num = ECHO_UART_PORT;
 
     uart_config_t uart_config = {
             .baud_rate = BAUD_RATE,
@@ -51,38 +50,6 @@ void initUART() {
     uart_set_mode(UART_PORT, UART_MODE_RS485_HALF_DUPLEX);
 
     data = (uint8_t *) malloc(BUF_SIZE);
-
-//    while (1) {
-//        //Read data from UART
-//        int len = uart_read_bytes(uart_num, data, BUF_SIZE, PACKET_READ_TICS);
-//
-//        if (len > 0) {
-//            printf("Received %u bytes:\n", len);
-//
-//            char message[len];
-//
-//            for (int i = 0; i < len; i++) {
-//                printf("0x%.2X ", (uint8_t) data[i]);
-//                message[i] = data[i];
-//                // Add a Newline character if you get a return charater from paste (Paste tests multibyte receipt/buffer)
-//                if (data[i] == '\r') {
-////                    uart_write_bytes(uart_num, "\n", 1);
-//                }
-//            }
-//
-//            if (strncmp((const char *) message, "$$$", len) == 0) {
-//                printf("$$$ Received\n", len);
-//                uart_write_bytes(uart_num, (const char *) "CMD", strlen("CMD"));
-//            }
-//
-//            printf("\n");
-////            uart_write_bytes(uart_num, "]\r\n", 3);
-//        } else {
-//            // Echo a "." to show we are alive while we wait for input
-//            printf("Nothing received\n");
-////            uart_write_bytes(uart_num, ".", 1);
-//        }
-//    }
 }
 
 int uartRead(char *message) {
@@ -94,11 +61,6 @@ int uartRead(char *message) {
         for (int i = 0; i < len; i++) {
             message[i] = data[i];
             printf("0x%.2X ", (uint8_t) data[i]);
-
-            // Add a Newline character if you get a return charater from paste (Paste tests multibyte receipt/buffer)
-//        if (data[i] == '\r') {
-//                    uart_write_bytes(uart_num, "\n", 1);
-//        }
         }
         printf("\n");
     }
