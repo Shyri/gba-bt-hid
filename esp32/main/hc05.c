@@ -60,7 +60,7 @@ typedef enum HC05_BUTTONS {
     PAD_LEFT = 0x80
 } HC05_BUTTONS_BITS;
 
-const uint8_t hid_descriptor_gamecube[] = {
+const uint8_t hid_descriptor_gba[] = {
         0x05, 0x01,        // Usage Page (Generic Desktop Ctrls)
         0x09, 0x05,        // Usage (Game Pad)
         0xA1, 0x01,        // Collection (Application)
@@ -155,13 +155,13 @@ void initBluetooth() {
     l2cap_init();
     sdp_init();
     memset(hid_service_buffer, 0, sizeof(hid_service_buffer));
-    hid_create_sdp_record(hid_service_buffer, 0x10001, 0x2508, 33, 0, 0, 0, hid_descriptor_gamecube,
-                          sizeof(hid_descriptor_gamecube), hid_device_name);
+    hid_create_sdp_record(hid_service_buffer, 0x10001, 0x2508, 33, 0, 0, 0, hid_descriptor_gba,
+                          sizeof(hid_descriptor_gba), hid_device_name);
     sdp_register_service(hid_service_buffer);
     device_id_create_sdp_record(device_id_sdp_service_buffer, 0x10003, DEVICE_ID_VENDOR_ID_SOURCE_BLUETOOTH,
                                 BLUETOOTH_COMPANY_ID_BLUEKITCHEN_GMBH, 1, 1);
     sdp_register_service(device_id_sdp_service_buffer);
-    hid_device_init(1, sizeof(hid_descriptor_gamecube), hid_descriptor_gamecube);
+    hid_device_init(1, sizeof(hid_descriptor_gba), hid_descriptor_gba);
     hid_device_register_packet_handler(&packet_handler);
 
     hci_power_control(HCI_POWER_ON);
