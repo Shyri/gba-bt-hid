@@ -19,7 +19,7 @@ The first prototype was made with an Atmega and HC-05:
 ![Gameboy](images/DSC_0244.JPG?raw=true "GBA")
 The [gba](gba) contains the code for a GBA program that uses the link port to communicate with a HC-05 bluetooth module using UART (HC-05 flashed with RN-42 firmware, find how to do it in the links at the bottom).
 
-This rom is stored in a W25Q32 flash chip. An Atmega328P performs a multiboot sequence reading from this chip and sending to the GBA through the link port. You can find the Atmega code [here](gba-bt-hid-fw) (It is actually written for arduino so you'll need to burn arduino's bootloader if you want to use it).
+This rom is stored in a W25Q32 flash chip. An Atmega328P performs a multiboot sequence reading from this chip and sending to the GBA through the link port. You can find the Atmega code [here](arduino) (It is actually written for arduino so you'll need to burn arduino's bootloader if you want to use it).
 
 Once multiboot ends, the gba program runs and talks to the HC-05 to handle bluetooth connection, and key presses.
 
