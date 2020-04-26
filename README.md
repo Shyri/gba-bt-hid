@@ -10,6 +10,14 @@ The project is basically an ESP32 connected to the GBA through the link port. Wi
 
 When turned on the ESP32 (using the code found in [esp32](esp32) peforms a multiboot sequence through the SPI to the GBA sending a rom that the ESP32 has stored in the flash memory. The code for this rom can be found in [gba](gba). Once loaded the ESP32 enables the UART port in the same pins and the rom communicates with the ESP32 using UART through the link port.
 
+This project was tested with ESP-IDF v3.3.2 that you can find here:
+
+https://github.com/espressif/esp-idf/releases
+
+You also will need to install btstack. Commit https://github.com/bluekitchen/btstack/commit/a0a4507b35ea396d076a62a67efb1a5a800c5ff9 is the most recent version that is proved to work in this project.
+
+Just follow the ESP32 environment instructions here
+
 The ESP32 is powered by the 3.3V the GBA gives through the port.
 Once the ESP32 is programmed the male link port connector should be wired to it like the following diagram:
 ![ESP32Diagram](images/ESP32-diagram.png?raw=true "Diagram")
