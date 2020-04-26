@@ -343,7 +343,7 @@ void connectLastDevice() {
 }
 
 esp_err_t save_addr(bd_addr_t *addr) {
-    nvs_handle_t my_handle;
+    nvs_handle my_handle;
     esp_err_t err;
 
     err = nvs_open(STORAGE_NAMESPACE, NVS_READWRITE, &my_handle);
@@ -363,7 +363,7 @@ esp_err_t save_addr(bd_addr_t *addr) {
 
 
 esp_err_t read_addr(bd_addr_t *addr) {
-    nvs_handle_t my_handle;
+    nvs_handle my_handle;
     esp_err_t err;
 
     err = nvs_open(STORAGE_NAMESPACE, NVS_READWRITE, &my_handle);
